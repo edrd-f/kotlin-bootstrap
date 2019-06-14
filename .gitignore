@@ -1,0 +1,6 @@
+# Gradle build and internal files
+build/
+.gradle/
+
+# Sublime stuff 
+*.sublime-workspace

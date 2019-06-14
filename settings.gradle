@@ -1,0 +1,8 @@
+rootProject.name = 'SampleProject'
+
+buildCache {
+   local(DirectoryBuildCache) {
+      directory = new File(rootDir, 'build/build-cache')
+      removeUnusedEntriesAfterDays = 10
+   }
+}

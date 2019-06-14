@@ -1,0 +1,12 @@
+{
+  "folders":
+  [
+    {
+      "path": ".",
+      "file_exclude_patterns": 
+["project.sublime-project", ".editorconfig", 
+".gitignore", "gradle.properties"],
+      "folder_exclude_patterns": ["build", ".gradle"]
+    }
+  ]
+}

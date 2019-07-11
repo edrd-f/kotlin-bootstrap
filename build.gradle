@@ -7,12 +7,17 @@ plugins {
 
 repositories {
    jcenter()
+
+   maven {
+      url 'https://dl.bintray.com/spekframework/spek-dev'
+   }
 }
 
 dependencies {
    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
    testImplementation 'org.jetbrains.kotlin:kotlin-test'
-   testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+   testImplementation 'org.spekframework.spek2:spek-dsl-jvm:2.0.0-rc.1.192+515f23f'
+   testRuntimeOnly 'org.spekframework.spek2:spek-runner-junit5:2.0.0-rc.1.192+515f23f'
 }
 
 sourceSets {
@@ -25,6 +30,12 @@ mainClassName = 'sample.project.MainKt'
 testlogger {
    theme = 'mocha'
    showSimpleNames = true
+}
+
+test {
+   useJUnitPlatform {
+      includeEngines 'spek2'
+   }
 }
 
 compileKotlin {

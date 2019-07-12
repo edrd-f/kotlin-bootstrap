@@ -1,46 +1,47 @@
 plugins {
-   id 'org.jetbrains.kotlin.jvm' version '1.3.21'
-   id 'com.adarshr.test-logger' version '1.7.0'
-   id 'de.dplatz.clear' version '0.3'
-   id 'application'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.21'
+    id 'com.adarshr.test-logger' version '1.7.0'
+    id 'de.dplatz.clear' version '0.3'
+    id 'application'
 }
 
 repositories {
-   jcenter()
+    jcenter()
 
-   maven {
-      url 'https://dl.bintray.com/spekframework/spek-dev'
-   }
+    maven {
+        url 'https://dl.bintray.com/spekframework/spek-dev'
+    }
 }
 
 dependencies {
-   implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-   testImplementation 'org.jetbrains.kotlin:kotlin-test'
-   testImplementation 'org.spekframework.spek2:spek-dsl-jvm:2.0.0-rc.1.192+515f23f'
-   testRuntimeOnly 'org.spekframework.spek2:spek-runner-junit5:2.0.0-rc.1.192+515f23f'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    testImplementation 'org.spekframework.spek2:spek-dsl-jvm:2.0.0-rc.1.192+515f23f'
+    testRuntimeOnly 'org.spekframework.spek2:spek-runner-junit5:2.0.0-rc.1.192+515f23f'
 }
 
 sourceSets {
-   main.kotlin.srcDirs += 'src'
-   test.kotlin.srcDirs += 'test'
+    main.kotlin.srcDirs += 'src'
+    test.kotlin.srcDirs += 'test'
 }
 
 mainClassName = 'sample.project.MainKt'
 
 testlogger {
-   theme = 'mocha'
-   showSimpleNames = true
+    theme = 'mocha'
+    showSimpleNames = true
 }
 
 test {
-   useJUnitPlatform {
-      includeEngines 'spek2'
-   }
+    useJUnitPlatform {
+        includeEngines 'spek2'
+    }
 }
 
 compileKotlin {
-   kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions.jvmTarget = '1.8'
 }
+
 compileTestKotlin {
-   kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions.jvmTarget = '1.8'
 }

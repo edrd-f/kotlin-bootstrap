@@ -2,15 +2,14 @@ import com.adarshr.gradle.testlogger.theme.ThemeType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version("1.3.50")
+    application
     id("com.adarshr.test-logger") version("1.7.0")
     id("de.dplatz.clear") version("0.3")
-    id("application")
+    kotlin("jvm") version("1.3.50")
 }
 
 repositories {
     jcenter()
-
     maven("https://dl.bintray.com/spekframework/spek")
 }
 
@@ -35,7 +34,8 @@ kotlin {
 application.mainClassName = "sample.project.Main"
 
 testlogger {
-    theme = ThemeType.MOCHA
+    theme = ThemeType.MOCHA_PARALLEL
+    showSimpleNames = true
 }
 
 tasks.withType<Test> {
@@ -47,3 +47,5 @@ tasks.withType<Test> {
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+apply(from = "gradle/tests.gradle.kts")

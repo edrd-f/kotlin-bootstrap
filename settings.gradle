@@ -1,9 +1,1 @@
 rootProject.name = 'SampleProject'
-
-buildCache {
-    local(DirectoryBuildCache) {
-        enabled = true
-        directory = new File(rootDir, 'build/build-cache')
-        removeUnusedEntriesAfterDays = 10
-    }
-}

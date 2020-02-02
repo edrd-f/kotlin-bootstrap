@@ -37,6 +37,7 @@ tasks.withType<Test> {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+    freeCompilerArgs = ["-Xjsr305=strict"]
 }
 
 apply(from = "gradle/tests.gradle.kts")

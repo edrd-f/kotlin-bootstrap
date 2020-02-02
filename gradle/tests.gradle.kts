@@ -6,8 +6,7 @@ val isOpenJ9 = (
 val openJ9Options = listOf(
     "-Xms64m",
     "-Xquickstart",
-    "-Xshareclasses",
-    "-Xtune:virtualized"
+    "-Xshareclasses"
 )
 
 tasks.withType<Test> {

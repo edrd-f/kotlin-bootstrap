@@ -1,7 +1,8 @@
 # Kotlin Bootstrap
 
 This repository contains a basic Gradle setup for Kotlin projects using the language's conventions (e.g. directory structure).
-It also contains configurations for faster test executions. Details below.
+
+It also includes Gradle configurations and tips for faster build/test runs. Details below.
 
 ## Using OpenJ9 to speed up build and tests
 

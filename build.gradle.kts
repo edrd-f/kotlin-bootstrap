@@ -27,14 +27,6 @@ kotlin {
 
 application.mainClassName = "sample.project.Main"
 
-tasks.withType<Test> {
-    useJUnitPlatform {
-        testLogging {
-            events("passed", "skipped", "failed")
-        }
-    }
-}
-
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         jvmTarget = "1.8"
@@ -42,4 +34,19 @@ tasks.withType<KotlinCompile> {
     }
 }
 
-apply(from = "gradle/tests.gradle.kts")
+tasks.withType<Test> {
+    useJUnitPlatform {
+        testLogging {
+            events("passed", "skipped", "failed")
+        }
+    }
+
+    reports {
+        junitXml.isEnabled = false
+    }
+
+    systemProperty("junit.jupiter.execution.parallel.enabled", "true")
+    systemProperty("junit.jupiter.execution.parallel.mode.default", "concurrent")
+
+    maxParallelForks = Runtime.getRuntime().availableProcessors()
+}

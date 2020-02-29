@@ -38,9 +38,13 @@ if [ "$BRANCH" = "" ]; then
   BRANCH=master
 fi
 
-git clone -b $BRANCH --depth=1 https://github.com/edrd-f/kotlin-bootstrap.git kotlin-bootstrap-tmp
+tmp_repo_dir=kotlin-bootstrap-tmp
 
-cp -r kotlin-bootstrap-tmp/template $project_name 
+git clone -b $BRANCH --depth=1 https://github.com/edrd-f/kotlin-bootstrap.git $tmp_repo_dir
+
+cp -r $tmp_repo_dir/template $project_name 
+rm -rf $tmp_repo_dir
+
 cd $project_name
 
 sed -i "s/{{projectName}}/$project_name/" settings.gradle.kts

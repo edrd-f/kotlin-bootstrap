@@ -1,11 +1,11 @@
-package sample.project
+package {{basePackage}}
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-object MainTest {
+class MainTest {
     @Test
-    fun `test nothing`() {
+    fun testNothing() {
         assertEquals(1, 1)
     }
 }

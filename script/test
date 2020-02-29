@@ -1,0 +1,46 @@
+#!/bin/bash
+
+export SCRIPT_ENV="test"
+
+fail() {
+    echo "$1"
+    exit 1
+}
+
+cd $(dirname $0)
+source bootstrap
+
+#
+# Invalid project names
+#
+invalid_project_names=("" "@a" "b@c" "c--d" "-" "-ab" "-bcd" "a.b" "0ab" "ab-" "a1-")
+
+for name in ${invalid_project_names[@]}; do
+    is_valid_project_name "$name" && fail "Project name '$name' should not be valid."
+done
+#
+# Valid project names
+#
+valid_project_names=("proj" "_" "__" "_proj" "_0proj" "_0" "proj_" "proj0" "the-proj" "the_proj")
+
+for name in ${valid_project_names[@]}; do
+    is_valid_project_name "$name" || fail "Project name '$name' should be valid."
+done
+#
+# Invalid package names
+#
+invalid_package_names=("" "_" "1" "1ab" "-" "a-b" "Abc" "a.Bcd" "A.bc" "-abc" "ab-" ".a" "b." "c.d." "a.1.b" "a.1")
+
+for name in ${invalid_package_names[@]}; do
+    is_valid_package_name "$name" && fail "Package name '$name' should not be valid."
+done
+#
+# Valid package names
+#
+valid_package_names=("_a" "_a.b" "_1._2" "abc.def" "a.b.c" "a._b.d" "a._1" "a.b_" "a.bCd")
+
+for name in ${valid_package_names[@]}; do
+    is_valid_package_name "$name" || fail "Package name '$name' should be valid."
+done
+
+echo "Success"

@@ -1,0 +1,17 @@
+name: build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Bootstrap project
+      run: |
+        branch=$(sed 's/^refs\/heads\///' <<<"${{ github.ref }}")
+        bash <(curl -sSL https://raw.githubusercontent.com/edrd-f/kotlin-bootstrap/$branch/script/bootstrap) <<INPUT
+        hello
+        hello.world
+        INPUT
+        cd hello
+        ./gradlew --console=auto check

@@ -1,4 +1,4 @@
 @file:JvmName("Main")
-package sample.project
+package {{basePackage}}
 
 fun main() {}

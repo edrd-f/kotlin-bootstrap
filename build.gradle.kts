@@ -25,7 +25,7 @@ kotlin {
     sourceSets["test"].resources.srcDir("src/test/resources")
 }
 
-application.mainClassName = "sample.project.Main"
+application.mainClassName = "{{basePackage}}.Main"
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {

@@ -1,1 +1,1 @@
-rootProject.name = "kotlin-bootstrap"
+rootProject.name = "{{projectName}}"

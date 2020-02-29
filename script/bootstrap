@@ -1,0 +1,46 @@
+#!/bin/bash
+
+is_valid_project_name() {
+    [[ "$1" =~ ^[_a-zA-Z]+([_a-zA-Z0-9-]?[a-zA-Z0-9]+)*$ ]] 
+}
+
+is_valid_package_name() {
+    [[ "$1" =~ ^(_[a-zA-Z0-9]|[a-z][_a-zA-Z0-9]?)+(\.(_[a-zA-Z0-9]|[a-z][_a-zA-Z0-9]?)+)*$ ]]
+}
+
+# Just provide the functions when running on the test env
+[ "$SCRIPT_ENV" = "test" ] && return
+
+while [ 1 ]; do
+    printf "Project name (only alphanumeric characters and dashes): "
+    read project_name
+
+    is_valid_project_name "$project_name" && break
+
+    echo "Invalid project name. Try again."
+done
+
+while [ 1 ]; do
+    printf "Base package: "
+    read base_package
+
+    is_valid_package_name "$base_package" && break
+
+    echo "Invalid base package. Try again."
+done  
+
+[ -d "$project_name" ] && {
+    echo "Directory '$projectName' exists. Remove it and run the script again."
+    exit 1
+}
+
+git clone --depth=1 https://github.com/edrd-f/kotlin-bootstrap.git "$project_name"
+
+cd "$project_name"
+rm -rf .git .github script
+
+sed -i "s/{{projectName}}/$project_name/" settings.gradle.kts
+sed -i "s/{{basePackage}}/$base_package/" \
+    build.gradle.kts \
+    src/main/Main.kt \
+    src/test/MainTest.kt

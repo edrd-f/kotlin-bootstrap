@@ -3,10 +3,16 @@ name: build
 on: [push]
 
 jobs:
-  build:
+  unit-tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Bootstrap project
+    - uses: actions/checkout@v2
+    - name: Run unit tests
+      run: script/test
+  bootstrap-script-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test bootstrap script
       run: |
         branch=$(sed 's/^refs\/heads\///' <<<"${{ github.ref }}")
         bash <(curl -sSL https://raw.githubusercontent.com/edrd-f/kotlin-bootstrap/$branch/script/bootstrap) <<INPUT

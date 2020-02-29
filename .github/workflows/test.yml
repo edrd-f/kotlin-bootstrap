@@ -14,8 +14,8 @@ jobs:
     steps:
     - name: Test bootstrap script
       run: |
-        branch=$(sed 's/^refs\/heads\///' <<<"${{ github.ref }}")
-        bash <(curl -sSL https://raw.githubusercontent.com/edrd-f/kotlin-bootstrap/$branch/script/bootstrap) <<INPUT
+        export BRANCH=$(sed 's/^refs\/heads\///' <<<"${{ github.ref }}")
+        bash <(curl -sSL https://raw.githubusercontent.com/edrd-f/kotlin-bootstrap/$BRANCH/script/bootstrap) <<INPUT
         hello
         hello.world
         INPUT

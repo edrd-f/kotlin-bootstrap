@@ -29,15 +29,19 @@ while [ 1 ]; do
     echo "Invalid base package. Try again."
 done  
 
-[ -d "$project_name" ] && {
-    echo "Directory '$projectName' exists. Remove it and run the script again."
+[ -d $project_name ] && {
+    echo "Directory '$project_name' exists. Remove it and run the script again."
     exit 1
 }
 
-git clone --depth=1 https://github.com/edrd-f/kotlin-bootstrap.git "$project_name"
+if [ "$BRANCH" = "" ]; then
+  BRANCH=master
+fi
 
-cd "$project_name"
-rm -rf .git .github script doc
+git clone -b $BRANCH --depth=1 https://github.com/edrd-f/kotlin-bootstrap.git kotlin-bootstrap-tmp
+
+cp -r kotlin-bootstrap-tmp/template $project_name 
+cd $project_name
 
 sed -i "s/{{projectName}}/$project_name/" settings.gradle.kts
 sed -i "s/{{basePackage}}/$base_package/" \

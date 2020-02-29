@@ -1,4 +1,4 @@
-# Using OpenJ9 to speed up build the build
+# Using OpenJ9 to speed up the build
 
 1. Install [OpenJ9](https://adoptopenjdk.net/releases.html?jvmVariant=openj9) by extracting it to a directory such as `/opt/jdk/openj9/0.18.1`
 1. Add the following to your `/etc/environment`, replacing `<YOUR-USER-HOME>`:

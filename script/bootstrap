@@ -37,7 +37,7 @@ done
 git clone --depth=1 https://github.com/edrd-f/kotlin-bootstrap.git "$project_name"
 
 cd "$project_name"
-rm -rf .git .github script
+rm -rf .git .github script doc
 
 sed -i "s/{{projectName}}/$project_name/" settings.gradle.kts
 sed -i "s/{{basePackage}}/$base_package/" \

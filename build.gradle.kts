@@ -18,13 +18,6 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 
-kotlin {
-    sourceSets["main"].kotlin.srcDir("src/main")
-    sourceSets["main"].resources.srcDir("src/main/resources")
-    sourceSets["test"].kotlin.srcDir("src/test")
-    sourceSets["test"].resources.srcDir("src/test/resources")
-}
-
 application.mainClassName = "{{basePackage}}.Main"
 
 tasks.withType<KotlinCompile> {

@@ -47,8 +47,8 @@ rm -rf $tmp_repo_dir
 
 cd $project_name
 
-sed -i "s/{{projectName}}/$project_name/" settings.gradle.kts
-sed -i "s/{{basePackage}}/$base_package/" \
+sed -i -e "s/{{projectName}}/$project_name/" settings.gradle.kts
+sed -i -e "s/{{basePackage}}/$base_package/" \
     build.gradle.kts \
     src/main/kotlin/Main.kt \
     src/test/kotlin/MainTest.kt

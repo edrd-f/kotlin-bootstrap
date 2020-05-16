@@ -47,8 +47,21 @@ rm -rf $tmp_repo_dir
 
 cd $project_name
 
-sed -i -e "s/{{projectName}}/$project_name/" settings.gradle.kts
-sed -i -e "s/{{basePackage}}/$base_package/" \
+function file_replace() {
+    local expr="$1"
+    shift
+    local files="$@"
+    local os=$(uname -s)
+
+    if [ "$os" = "Darwin" ]; then
+      sed -i "" -e "$expr" $files
+    else
+      sed -i "$expr" $files
+    fi
+}
+
+file_replace "s/{{projectName}}/$project_name/" settings.gradle.kts
+file_replace "s/{{basePackage}}/$base_package/" \
     build.gradle.kts \
     src/main/kotlin/Main.kt \
     src/test/kotlin/MainTest.kt

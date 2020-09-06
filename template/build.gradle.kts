@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     application
-    kotlin("jvm") version("1.3.72")
+    kotlin("jvm") version("1.4.0")
 }
 
 repositories {
@@ -12,8 +12,6 @@ repositories {
 val junitVersion: String by project
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }

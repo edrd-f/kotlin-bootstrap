@@ -16,7 +16,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 
-application.mainClassName = "{{basePackage}}.MainKt"
+application.mainClass.set("{{basePackage}}.MainKt")
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {

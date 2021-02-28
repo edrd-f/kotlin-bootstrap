@@ -20,7 +20,7 @@ jobs:
         hello.world
         INPUT
         cd hello
-        ./gradlew --console=auto check
+        ./gradlew -p modules --console=auto check
   macos-bootstrap-script-test:
     runs-on: macos-latest
     steps:
@@ -32,4 +32,4 @@ jobs:
         hello.world
         INPUT
         cd hello
-        ./gradlew --console=auto check
+        ./gradlew -p modules --console=auto check

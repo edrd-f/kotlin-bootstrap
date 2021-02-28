@@ -62,6 +62,6 @@ function file_replace() {
 
 file_replace "s/{{projectName}}/$project_name/" settings.gradle.kts
 file_replace "s/{{basePackage}}/$base_package/" \
-    build.gradle.kts \
-    src/main/kotlin/Main.kt \
-    src/test/kotlin/MainTest.kt
+    modules/application/application.gradle.kts \
+    modules/application/src/main/kotlin/Main.kt \
+    modules/application/src/test/kotlin/MainTest.kt

@@ -35,7 +35,7 @@ done
 }
 
 if [ "$BRANCH" = "" ]; then
-  BRANCH=master
+  BRANCH=main
 fi
 
 tmp_repo_dir=kotlin-bootstrap-tmp

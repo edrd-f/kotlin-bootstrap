@@ -6,7 +6,7 @@ tasks.withType<Test> {
 	}
 
 	reports {
-		junitXml.isEnabled = false
+		junitXml.required.set(false)
 	}
 
 	systemProperty("junit.jupiter.execution.parallel.enabled", "true")

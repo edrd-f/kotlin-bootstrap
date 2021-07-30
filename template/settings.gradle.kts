@@ -19,9 +19,11 @@ requireNotNull(modulesDir.listFiles()) { "Unable to list files under $modulesDir
 	.filter(File::isDirectory)
 	.map(File::getName)
 	.forEach { dir ->
-		include(":$dir")
-		project(":$dir").apply {
-			projectDir = modulesDir.resolve(dir)	
-			buildFileName = "$dir.gradle.kts"
+		val moduleName = dir.replace(".", ":")
+		include(":$moduleName")
+		project(":$moduleName").apply {
+			projectDir = modulesDir.resolve(dir)
+			val lastModuleNameItem = dir.split(".").last()
+			buildFileName = "$lastModuleNameItem.gradle.kts"
 		}
 	}

@@ -3,9 +3,8 @@ plugins {
 }
 
 dependencies {
-  val junitVersion = "5.7.2"
-	testCompileOnly("org.junit.jupiter:junit-jupiter-api:$junitVersion")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+	testCompileOnly("org.junit.jupiter:junit-jupiter-api:${versions.junit}")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${versions.junit}")
 }
 
 tasks.withType<Test> {

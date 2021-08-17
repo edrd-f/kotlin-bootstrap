@@ -1,3 +1,13 @@
+plugins {
+	kotlin("jvm")
+}
+
+dependencies {
+  val junitVersion = "5.7.2"
+	testCompileOnly("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform {
 		testLogging {

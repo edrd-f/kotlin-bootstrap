@@ -1,7 +1,12 @@
 plugins {
-	id("org.gradle.kotlin.kotlin-dsl") version "2.1.4"
+	`kotlin-dsl`
 }
 
 repositories {
+  gradlePluginPortal()
 	mavenCentral()
+}
+
+dependencies {
+  implementation("org.jetbrains.kotlin:kotlin-gradle-plugin")
 }
